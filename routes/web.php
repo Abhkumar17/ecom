@@ -22,5 +22,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+//Admin route
 
-Route::get('admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
+Route::get('/admin/login', [AdminController::class,'login'])->name('admin.login');
+
+Route::get('/admin/register', function () {
+    return view('admin.register');
+});
+
+Route::post('/fetchData', [AdminController::class,'fetchData']);
+
+
+
